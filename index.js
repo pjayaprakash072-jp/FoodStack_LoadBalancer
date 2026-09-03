@@ -1,10 +1,10 @@
 
-const express = require('express') // used to create http server
+import express from 'express' // used to create http server
 
 
-const {createProxyMiddleware} = require('http-proxy-middleware') // used to transefer request to the available(selsecteed) server 
+import {createProxyMiddleware} from 'http-proxy-middleware' // used to transefer request to the available(selsecteed) server 
 
-const dotEnv = require('dotenv'); // used to process .env variables.
+import  dotEnv from  'dotenv' // used to process .env variables.
 
 dotEnv.config(); // loding the . env file.
 
@@ -85,6 +85,10 @@ const checkHealth = async(server)=>{
         server.healthy= false
     }
 }
+
+app.get("/",(req,res)=>{
+    res.send("working");
+})
 // checking all servers and printing the each serverstatus.
 
 const checkAllServer =async ()=>{
