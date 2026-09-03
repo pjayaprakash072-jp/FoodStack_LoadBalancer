@@ -6,11 +6,7 @@ const {createProxyMiddleware} = require('http-proxy-middleware') // used to tran
 
 const dotEnv = require('dotenv'); // used to process .env variables.
 
-dotEnv.config(
-    {
-        path:"../.env"
-    }
-); // loding the . env file.
+dotEnv.config(); // loding the . env file.
 
 const app = express() // creating express server. THIS IS LOADBALANCER.
 
