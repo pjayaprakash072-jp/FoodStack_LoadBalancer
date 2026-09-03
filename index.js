@@ -118,8 +118,10 @@ const getNextHealthyServer = ()=>{
 
 // load balancer middle ware -> what happen when request come to loadbalancer
 
-app.use((req,res,next)=>{
+app.use(async(req,res,next)=>{
 
+    // check all servers
+    await checkAllServer();
     // get healthy (runnning) server
 
     const server = getNextHealthyServer();
@@ -137,18 +139,20 @@ app.use((req,res,next)=>{
 
     proxies[server.url](req,res,next); // forward the reauest.
 })
+//=========================================================
+// USE THIS WHEN RUNNIG LOCALLY.
+// // start health check immediatly
 
-// start health check immediatly
+// checkAllServer();
 
-checkAllServer();
+// // check continously for every 5 seconds
 
-// check continously for every 5 seconds
-
-setInterval(
-    ()=>{
-        checkAllServer();
-    },5000
-)
+// setInterval(
+//     ()=>{
+//         checkAllServer();
+//     },5000
+// )
+// ===========================================================
 
 const PORT = 4000;
 // Starting loadBalancer.
