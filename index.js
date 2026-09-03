@@ -152,12 +152,14 @@ app.use(async(req,res,next)=>{
 //         checkAllServer();
 //     },5000
 // )
-// ===========================================================
 
-const PORT = 4000;
-// Starting loadBalancer.
-app.listen(PORT,()=>{
-    console.log("LoadBalancer is runnig at port 4000");
-})
+// const PORT = 4000;
+// // Starting loadBalancer.
+// app.listen(PORT,()=>{
+    //     console.log("LoadBalancer is runnig at port 4000");
+    // })
+    
+    // // $env:PORT=5001; node index.js USE THIS TO RUN BACKEND SERVER.
+    // ===========================================================
 
-// $env:PORT=5001; node index.js USE THIS TO RUN BACKEND SERVER.
+export default app;
